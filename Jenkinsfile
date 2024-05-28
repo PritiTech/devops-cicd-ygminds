@@ -13,7 +13,7 @@ pipeline {
         stage('Build docker image'){
             steps{
                 script{
-                    sh 'docker buildx build -t ankitjagtap/devops-integration .'
+                    sh 'docker buildx build -t pritiprasad/devops-integration .'
                 }
             }
         }
@@ -24,14 +24,14 @@ pipeline {
                    sh 'docker login -u pritiprasad -p ${dockerhubpwd}'
 
 }
-                   sh 'docker push ankitjagtap/devops-integration'
+                   sh 'docker push pritiprasad/devops-integration'
                 }
             }
         }
         stage('EKS and Kubectl configuration'){
             steps{
                 script{
-                    sh 'aws eks update-kubeconfig --region ap-south-1 --name ankit-cluster'
+                    sh 'aws eks update-kubeconfig --region ap-south-1 --name priti-cluster'
                 }
             }
         }
