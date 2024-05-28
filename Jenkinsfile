@@ -6,7 +6,7 @@ pipeline {
     stages{
         stage('Build Maven'){
             steps{
-                git 'https://github.com/ankit-jagtap-devops/devops-cicd-ygminds.git'
+                git 'https://github.com/PritiTech/devops-cicd-ygminds.git'
                 sh 'mvn clean install'
             }
         }
@@ -21,7 +21,7 @@ pipeline {
             steps{
                 script{
                    withCredentials([string(credentialsId: 'dockerhub-pwd', variable: 'dockerhubpwd')]) {
-                   sh 'docker login -u ankitjagtap -p ${dockerhubpwd}'
+                   sh 'docker login -u pritiprasad -p ${dockerhubpwd}'
 
 }
                    sh 'docker push ankitjagtap/devops-integration'
